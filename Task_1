@@ -1,0 +1,39 @@
+#include <iostream>
+
+using namespace std;
+
+const int ROWS = 3;
+const int COLS = 3;
+
+// Функція для транспонування матриці
+void transposeMatrix(int matrix[ROWS][COLS]) {
+    int transposedMatrix[COLS][ROWS];
+
+    for (int i = 0; i < COLS; ++i) {
+        for (int j = 0; j < ROWS; ++j) {
+            transposedMatrix[i][j] = matrix[j][i];
+        }
+    }
+
+    // Виведення 
+    for (int i = 0; i < COLS; ++i) {
+        for (int j = 0; j < ROWS; ++j) {
+            cout << transposedMatrix[i][j] << " ";
+        }
+        cout << endl;
+    }
+}
+
+int main() {
+    // Початкова матриця
+    int matrix[ROWS][COLS] = {
+        {1, 2, 3},
+        {4, 5, 6},
+        {7, 8, 9}
+    };
+    
+    
+    transposeMatrix(matrix);
+
+    return 0;
+}
