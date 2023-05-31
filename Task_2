@@ -1,0 +1,84 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int main() {
+    int size;
+
+    // Введення розміру масиву
+    cout << "Введіть кількість елементів: ";
+    cin >> size;
+
+    // Створення динамічного масиву
+    string* names = new string[size];
+    string* phones = new string[size];
+
+    // Введення даних
+    cout << "Введіть ім'я та номер телефону для кожного елемента:" << endl;
+    for (int i = 0; i < size; i++) {
+        cout << "Елемент " << i + 1 << ":" << endl;
+        cout << "Ім'я: ";
+        cin >> names[i];
+        cout << "Номер телефону: ";
+        cin >> phones[i];
+    }
+
+    // Пошук за ім'ям
+    string searchName;
+    cout << "Введіть ім'я для пошуку: ";
+    cin >> searchName;
+
+    bool found = false;
+    for (int i = 0; i < size; i++) {
+        if (names[i] == searchName) {
+            cout << "Знайдено: " << names[i] << " - " << phones[i] << endl;
+            found = true;
+        }
+    }
+
+    if (!found) {
+        cout << "Елемент з таким ім'ям не знайдено." << endl;
+    }
+
+
+    string searchPhone;
+    cout << "Введіть номер телефону для пошуку: ";
+    cin >> searchPhone;
+
+    found = false;
+    for (int i = 0; i < size; i++) {
+        if (phones[i] == searchPhone) {
+            cout << "Знайдено: " << names[i] << " - " << phones[i] << endl;
+            found = true;
+        }
+    }
+
+    if (!found) {
+        cout << "Елемент з таким номером телефону не знайдено." << endl;
+    }
+
+
+    int index;
+    cout << "Введіть індекс елемента для зміни даних: ";
+    cin >> index;
+
+    if (index >= 0 && index < size) {
+        string newName, newPhone;
+        cout << "Введіть нове ім'я: ";
+        cin >> newName;
+        cout << "Введіть новий номер телефону: ";
+        cin >> newPhone;
+        names[index] = newName;
+        phones[index] = newPhone;
+        cout << "Дані були успішно змінені." << endl;
+    } else {
+        cout << "Недійсний індекс елемента." << endl;
+    }
+
+
+    delete[] names;
+    delete[] phones;
+
+    return 0;
+}
